@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<suite name="test">
+    <test name="login">
+        <classes>
+            <class name="com.auto.base.BaseDriver"/>
+            <class name="com.auto.base.LoginTest"/>
+        </classes>
+    </test>
+    <test name="buy">
+        <classes>
+            <class name="com.auto.base.BaseDriver"/>
+            <class name="com.auto.base.BuyTest"/>
+        </classes>
+    </test>
+    <test name="set">
+        <classes>
+            <class name="com.auto.base.BaseDriver"/>
+            <class name="com.auto.base.SetingTest"/>
+        </classes>
+    </test>
+</suite>
