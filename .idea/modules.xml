@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/AutoTest-IOS.iml" filepath="$PROJECT_DIR$/.idea/AutoTest-IOS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Iflow/Iflow.iml" filepath="$PROJECT_DIR$/Iflow/Iflow.iml" />
+    </modules>
+  </component>
+</project>
