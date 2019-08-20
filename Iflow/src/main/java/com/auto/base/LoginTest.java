@@ -1,9 +1,11 @@
 package com.auto.base;
 
+import io.appium.java_client.remote.HideKeyboardStrategy;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class LoginTest extends BaseDriver{
@@ -27,20 +29,13 @@ public class LoginTest extends BaseDriver{
         iosDriver.findElementByXPath(phonenumxpath).sendKeys(Phonenum);
 
         String pwdxpath="//XCUIElementTypeApplication[@name=\"IFLOW\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeSecureTextField";
-        String pwd="111111";
+        String pwd="123456";
         iosDriver.findElementByXPath(pwdxpath).sendKeys(pwd);
 
-
-        String login="//XCUIElementTypeButton[@name=\"立即登录\"]";
-        WebElement webElement = iosDriver.findElementByIosUIAutomation(
-                "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(\"Display\"))");
-
-
-        WebElement ele=iosDriver.findElementByXPath("//XCUIElementTypeButton[@name=\"立即登录\"]");
-        JavascriptExecutor dj=(JavascriptExecutor)iosDriver;//将Driver实例化为js对象
-        dj.executeScript("arguments[0].scrollIntoViewIfNeeded(true);", ele);//滑动到上面定位到的元素的位置
-        ele.click();
-        System.out.println("111111111"+iosDriver.findElementByXPath(login));
+        //点击键盘的完成按钮
+        iosDriver.findElementByAccessibilityId("Toolbar Done Button").click();;
+        //登录
+        iosDriver.findElementByAccessibilityId("立即登录").click();
 
 
         System.out.println("登录成功!!!!!!!!");
