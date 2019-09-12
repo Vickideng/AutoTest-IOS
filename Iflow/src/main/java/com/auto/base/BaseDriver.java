@@ -5,6 +5,7 @@ import java.net.URL;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 
@@ -13,7 +14,7 @@ public class BaseDriver {
     public static IOSDriver iosDriver=null;
 
     @BeforeSuite
-    public void initDriver() {
+    public void initDriver() throws MalformedURLException{
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "IOS");
@@ -28,16 +29,21 @@ public class BaseDriver {
 //        desiredCapabilities.setCapability(MobileCapabilityType.APP, "/Users/NEO/Library/Developer/Xcode/DerivedData/WebDriverAgent-hgctewdoodlffqfntrworqjqsugx/Build/Products/Debug-iphonesimulator/Pelly.app");
 
         desiredCapabilities.setCapability("platformVersion","11.4.1");
-        URL url = null;
-        try {
-            url = new URL("http://127.0.0.1:4723/wd/hub");
-        } catch (MalformedURLException e) {
 
-            e.printStackTrace();
-        }
+//        desiredCapabilities.setCapability("xcodeOrgId","84216350@qq.com");
+//        desiredCapabilities.setCapability("xcodeSigningId","iPhone Developer");
 
-        iosDriver = new IOSDriver(url, desiredCapabilities);
+        URL remoteUrl = new URL("http://localhost:4723/wd/hub");
 
+        iosDriver = new IOSDriver(remoteUrl, desiredCapabilities);
+
+
+
+    }
+
+    @AfterSuite
+    public void tearDown() {
+        iosDriver.quit();
     }
 
 }

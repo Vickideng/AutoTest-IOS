@@ -1,8 +1,9 @@
 package com.auto.base;
 
 import io.appium.java_client.MobileElement;
-import org.testng.Assert;
-import org.testng.Reporter;
+
+import static com.auto.base.Assert.check;
+
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -42,13 +43,5 @@ public class BuyTest extends BaseDriver {
         String actual=iosDriver.findElementByAccessibilityId("商品待发货").getText();
         check(actual,"商品待发货");
     }
-    public static void check(String expectValue, String actual){
-        //弹窗的断言：实际提示语，预期提示语，测试用例
-        if (expectValue.equals(actual)){
-            Reporter.log("执行结果"+"=>执行成功");
-        }else {
-            Reporter.log("执行结果"+"=>执行失败，期望:' "+expectValue+"'   实际值：'"+actual+"'");
-        }
-        Assert.assertEquals(expectValue, actual);
-    }
+
 }
