@@ -26,11 +26,19 @@ public class SetingTest extends BaseDriver{
         iosDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         iosDriver.findElementByAccessibilityId("我的昵称").click();
-        List<MobileElement> nicknameid = (List<MobileElement>) iosDriver.findElementsByIosNsPredicate("type==\"XCUIElementTypeOther\"");
+        List<MobileElement> nicknameid = (List<MobileElement>) iosDriver.findElementsByIosNsPredicate("type==\"XCUIElementTypeTextView\"");
+
+        System.out.println("=========="+nicknameid.get(0));
+
         nicknameid.get(0).click();
+//        String text;
+//        text=nicknameid.get(0).getAttribute("text");
+
         nicknameid.get(0).clear();
         iosDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        nicknameid.get(0).sendKeys("可可_Tester");
+        nicknameid.get(0).setValue("可可_Tester");
+//        nicknameid.get(0).sendKeys("可可_Tester");
+        List<MobileElement> save=iosDriver.findElementsByIosNsPredicate("type=\"XCUIElementTypeButton\"");
         iosDriver.findElementByAccessibilityId("保存").click();
 
         Thread.sleep(9000);
